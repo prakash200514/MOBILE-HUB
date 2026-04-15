@@ -47,7 +47,7 @@ require_once __DIR__ . '/includes/header.php';
             <img src="<?php echo SITE_URL; ?>/assets/images/products/<?php echo $product['image1'] ?? 'placeholder.png'; ?>" 
                  alt="<?php echo htmlspecialchars($product['name']); ?>"
                  id="productMainImg"
-                 onerror="this.src='https://placehold.co/600x600/0a0f1e/7c3aed?text=<?php echo urlencode($product['name']); ?>'">
+                 onerror="this.src='https://placehold.co/600x600/f8fafc/2563eb?text=<?php echo urlencode($product['name']); ?>'">
           </div>
           <div class="product-gallery-thumbs">
             <?php 
@@ -59,7 +59,7 @@ require_once __DIR__ . '/includes/header.php';
                  onclick="changeImage('<?php echo SITE_URL; ?>/assets/images/products/<?php echo $img; ?>', this)">
               <img src="<?php echo SITE_URL; ?>/assets/images/products/<?php echo $img; ?>" 
                    alt="<?php echo htmlspecialchars($product['name']); ?> view <?php echo $i + 1; ?>"
-                   onerror="this.src='https://placehold.co/100x100/0a0f1e/7c3aed?text=<?php echo $i + 1; ?>'">
+                   onerror="this.src='https://placehold.co/100x100/f8fafc/2563eb?text=<?php echo $i + 1; ?>'">
             </div>
             <?php endforeach; ?>
           </div>
@@ -87,7 +87,7 @@ require_once __DIR__ . '/includes/header.php';
 
           <!-- Price -->
           <div class="d-flex align-items-baseline gap-3 mb-4">
-            <span style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--text-primary);">
+            <span style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--text-dark);">
               <?php echo formatPrice($effectivePrice); ?>
             </span>
             <?php if ($discount > 0): ?>
@@ -121,10 +121,10 @@ require_once __DIR__ . '/includes/header.php';
               <input type="number" id="productQty" value="1" min="1" max="<?php echo $product['stock']; ?>" readonly>
               <button type="button" onclick="updateQty(1)">+</button>
             </div>
-            <button class="btn-gradient flex-grow-1" onclick="addToCart(<?php echo $product['id']; ?>, this)" 
+            <button class="btn-primary-solid flex-grow-1" onclick="addToCart(<?php echo $product['id']; ?>, this)" 
                     <?php echo $product['stock'] <= 0 ? 'disabled style="opacity:0.5;"' : ''; ?>
-                    id="addToCartBtn">
-              <i class="bi bi-bag-plus"></i> Add to Cart
+                    id="addToCartBtn" style="justify-content: center;">
+              <i class="bi bi-cart-plus"></i> Add to Cart
             </button>
           </div>
 
@@ -133,25 +133,25 @@ require_once __DIR__ . '/includes/header.php';
             <div class="row g-3">
               <div class="col-6">
                 <div class="d-flex align-items-center gap-2">
-                  <i class="bi bi-truck" style="color: var(--accent-cyan);"></i>
+                  <i class="bi bi-truck" style="color: var(--primary);"></i>
                   <span style="font-size: 0.82rem; color: var(--text-secondary);">Free delivery above ₹2,999</span>
                 </div>
               </div>
               <div class="col-6">
                 <div class="d-flex align-items-center gap-2">
-                  <i class="bi bi-shield-check" style="color: var(--accent-green);"></i>
+                  <i class="bi bi-shield-check" style="color: var(--success);"></i>
                   <span style="font-size: 0.82rem; color: var(--text-secondary);">1 Year warranty</span>
                 </div>
               </div>
               <div class="col-6">
                 <div class="d-flex align-items-center gap-2">
-                  <i class="bi bi-arrow-counterclockwise" style="color: var(--accent-orange);"></i>
+                  <i class="bi bi-arrow-counterclockwise" style="color: var(--warning);"></i>
                   <span style="font-size: 0.82rem; color: var(--text-secondary);">7-day returns</span>
                 </div>
               </div>
               <div class="col-6">
                 <div class="d-flex align-items-center gap-2">
-                  <i class="bi bi-patch-check" style="color: var(--accent-violet);"></i>
+                  <i class="bi bi-patch-check" style="color: var(--info);"></i>
                   <span style="font-size: 0.82rem; color: var(--text-secondary);">100% genuine</span>
                 </div>
               </div>
@@ -167,7 +167,7 @@ require_once __DIR__ . '/includes/header.php';
       <div class="col-lg-8">
         <div class="glass-card reveal">
           <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 24px;">
-            <i class="bi bi-cpu me-2" style="color: var(--accent-cyan);"></i>Specifications
+            <i class="bi bi-cpu me-2" style="color: var(--primary);"></i>Specifications
           </h3>
           <table class="specs-table">
             <?php foreach ($specs as $key => $value): ?>
@@ -200,7 +200,7 @@ require_once __DIR__ . '/includes/header.php';
               <?php endif; ?>
               <img src="<?php echo SITE_URL; ?>/assets/images/products/<?php echo $rp['image1'] ?? 'placeholder.png'; ?>" 
                    alt="<?php echo htmlspecialchars($rp['name']); ?>"
-                   onerror="this.src='https://placehold.co/400x400/0a0f1e/7c3aed?text=<?php echo urlencode($rp['name']); ?>'">
+                   onerror="this.src='https://placehold.co/400x400/f8fafc/2563eb?text=<?php echo urlencode($rp['name']); ?>'">
             </div>
             <div class="product-card-body">
               <div class="product-card-brand"><?php echo htmlspecialchars($rp['brand_name']); ?></div>

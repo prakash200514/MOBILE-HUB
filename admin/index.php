@@ -43,7 +43,7 @@ require_once __DIR__ . '/../includes/header.php';
     <div class="row g-4 mb-5">
       <div class="col-md-6 col-lg-3">
         <div class="admin-stat-card reveal reveal-delay-1">
-          <div class="admin-stat-icon" style="background: rgba(124,58,237,0.15); color: var(--accent-violet);">
+          <div class="admin-stat-icon" style="background: #f5f3ff; color: #7c3aed;">
             <i class="bi bi-bag-check"></i>
           </div>
           <div>
@@ -54,7 +54,7 @@ require_once __DIR__ . '/../includes/header.php';
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="admin-stat-card reveal reveal-delay-2">
-          <div class="admin-stat-icon" style="background: rgba(16,185,129,0.15); color: var(--accent-green);">
+          <div class="admin-stat-icon" style="background: #ecfdf5; color: #059669;">
             <i class="bi bi-currency-rupee"></i>
           </div>
           <div>
@@ -65,7 +65,7 @@ require_once __DIR__ . '/../includes/header.php';
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="admin-stat-card reveal reveal-delay-3">
-          <div class="admin-stat-icon" style="background: rgba(0,212,255,0.15); color: var(--accent-cyan);">
+          <div class="admin-stat-icon" style="background: #eff6ff; color: #2563eb;">
             <i class="bi bi-box"></i>
           </div>
           <div>
@@ -76,7 +76,7 @@ require_once __DIR__ . '/../includes/header.php';
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="admin-stat-card reveal reveal-delay-4">
-          <div class="admin-stat-icon" style="background: rgba(245,158,11,0.15); color: var(--accent-orange);">
+          <div class="admin-stat-icon" style="background: #fffbeb; color: #d97706;">
             <i class="bi bi-people"></i>
           </div>
           <div>
@@ -92,21 +92,21 @@ require_once __DIR__ . '/../includes/header.php';
       <div class="col-md-4">
         <div class="glass-card text-center reveal">
           <div style="font-size: 2rem; margin-bottom: 8px;">⏳</div>
-          <div style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); color: var(--accent-orange);"><?php echo $pendingOrders; ?></div>
+          <div style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); color: var(--warning);"><?php echo $pendingOrders; ?></div>
           <div style="font-size: 0.85rem; color: var(--text-secondary);">Pending Orders</div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="glass-card text-center reveal">
           <div style="font-size: 2rem; margin-bottom: 8px;">🔧</div>
-          <div style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); color: var(--accent-cyan);"><?php echo $totalServices; ?></div>
+          <div style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); color: var(--primary);"><?php echo $totalServices; ?></div>
           <div style="font-size: 0.85rem; color: var(--text-secondary);">Service Bookings</div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="glass-card text-center reveal">
           <div style="font-size: 2rem; margin-bottom: 8px;">📈</div>
-          <div style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); color: var(--accent-green);"><?php echo formatPrice($totalOrders > 0 ? $totalRevenue / $totalOrders : 0); ?></div>
+          <div style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); color: var(--success);"><?php echo formatPrice($totalOrders > 0 ? $totalRevenue / $totalOrders : 0); ?></div>
           <div style="font-size: 0.85rem; color: var(--text-secondary);">Avg Order Value</div>
         </div>
       </div>
@@ -136,7 +136,7 @@ require_once __DIR__ . '/../includes/header.php';
             <tbody>
               <?php foreach ($recentOrders as $order): ?>
               <tr>
-                <td><strong style="color: var(--accent-cyan);"><?php echo htmlspecialchars($order['order_number']); ?></strong></td>
+                <td><strong style="color: var(--primary);"><?php echo htmlspecialchars($order['order_number']); ?></strong></td>
                 <td>
                   <div><?php echo htmlspecialchars($order['user_name']); ?></div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);"><?php echo htmlspecialchars($order['user_email']); ?></div>

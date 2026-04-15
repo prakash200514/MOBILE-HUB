@@ -69,7 +69,7 @@ require_once __DIR__ . '/../includes/header.php';
             <tbody>
               <?php foreach ($orders as $order): ?>
               <tr>
-                <td><strong style="color: var(--accent-cyan);"><?php echo htmlspecialchars($order['order_number']); ?></strong></td>
+                <td><strong style="color: var(--primary);"><?php echo htmlspecialchars($order['order_number']); ?></strong></td>
                 <td>
                   <div><?php echo htmlspecialchars($order['user_name']); ?></div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);"><?php echo htmlspecialchars($order['user_email']); ?></div>

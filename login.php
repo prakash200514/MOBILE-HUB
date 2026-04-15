@@ -77,7 +77,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="col-md-8 col-lg-5">
           <div class="text-center mb-4 reveal">
             <h1 style="font-family: var(--font-display); font-size: 2rem; font-weight: 800;">
-              Welcome to <span style="background: var(--grad-1); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">MobileHub</span>
+              Welcome to <span style="color: var(--primary);">MobileHub</span>
             </h1>
             <p style="color: var(--text-secondary); font-size: 0.95rem;">Sign in to your account or create a new one</p>
           </div>

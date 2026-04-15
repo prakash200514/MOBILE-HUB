@@ -204,7 +204,7 @@ if ($categoryFilter) {
                   <?php endif; ?>
                   <img src="<?php echo SITE_URL; ?>/assets/images/products/<?php echo $product['image1'] ?? 'placeholder.png'; ?>" 
                        alt="<?php echo htmlspecialchars($product['name']); ?>"
-                       onerror="this.src='https://placehold.co/400x400/0a0f1e/7c3aed?text=<?php echo urlencode($product['name']); ?>'">
+                       onerror="this.src='https://placehold.co/400x400/f8fafc/2563eb?text=<?php echo urlencode($product['name']); ?>'">
                 </div>
                 <div class="product-card-body">
                   <div class="product-card-brand"><?php echo htmlspecialchars($product['brand_name']); ?></div>

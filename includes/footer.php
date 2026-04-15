@@ -2,13 +2,13 @@
 
   <!-- ── FOOTER ── -->
   <footer class="mh-footer">
-    <div class="container">
+    <div class="container-custom">
       <div class="row g-5">
         <!-- Brand Column -->
         <div class="col-lg-4 col-md-6">
-          <div class="footer-brand">MobileHub</div>
+          <div class="footer-brand">📱 MobileHub</div>
           <p class="footer-desc">
-            Your premium destination for the latest smartphones, accessories, and expert device services. We deliver quality and trust.
+            Your premium destination for the latest smartphones, accessories, and expert device services. We deliver quality & trust.
           </p>
           <div class="footer-social">
             <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
@@ -42,7 +42,7 @@
           </ul>
         </div>
 
-        <!-- Contact & Newsletter -->
+        <!-- Newsletter & Contact -->
         <div class="col-lg-4 col-md-6">
           <h4 class="footer-title">Stay Updated</h4>
           <p class="footer-desc" style="max-width: none;">Subscribe for exclusive deals, new launches, and tech news.</p>
@@ -51,8 +51,8 @@
             <button type="submit">Subscribe</button>
           </form>
           <div class="mt-4">
-            <p class="footer-desc mb-1" style="max-width: none;"><i class="bi bi-geo-alt me-2"></i>Tirunelveli, Tamil Nadu, India</p>
-            <p class="footer-desc mb-1" style="max-width: none;"><i class="bi bi-telephone me-2"></i>+91 98765 43210</p>
+            <p class="footer-desc mb-2" style="max-width: none;"><i class="bi bi-geo-alt me-2"></i>Tirunelveli, Tamil Nadu, India</p>
+            <p class="footer-desc mb-2" style="max-width: none;"><i class="bi bi-telephone me-2"></i>+91 98765 43210</p>
             <p class="footer-desc" style="max-width: none;"><i class="bi bi-envelope me-2"></i>support@mobilehub.com</p>
           </div>
         </div>
@@ -60,7 +60,7 @@
 
       <!-- Bottom Bar -->
       <div class="footer-bottom">
-        <div class="footer-copy">© <?php echo date('Y'); ?> MobileHub — All rights reserved.</div>
+        <div class="footer-copy">© <?php echo date('Y'); ?> MobileHub. All rights reserved.</div>
         <a href="#" class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
           Back to top <i class="bi bi-arrow-up"></i>
         </a>

@@ -47,7 +47,7 @@ $cartTotal = getCartTotal();
               <div class="cart-item-img">
                 <img src="<?php echo SITE_URL; ?>/assets/images/products/<?php echo $item['image1'] ?? 'placeholder.png'; ?>" 
                      alt="<?php echo htmlspecialchars($item['name']); ?>"
-                     onerror="this.src='https://placehold.co/100x100/0a0f1e/7c3aed?text=Phone'">
+                     onerror="this.src='https://placehold.co/100x100/f8fafc/2563eb?text=Phone'">
               </div>
               <div class="cart-item-info">
                 <a href="<?php echo SITE_URL; ?>/product.php?slug=<?php echo $item['slug']; ?>" class="cart-item-name" style="text-decoration: none; color: var(--text-primary);">
@@ -87,7 +87,7 @@ $cartTotal = getCartTotal();
             </div>
             <div class="cart-summary-row">
               <span>Shipping</span>
-              <span style="color: var(--accent-green);"><?php echo $cartTotal >= 2999 ? 'FREE' : formatPrice(99); ?></span>
+              <span style="color: var(--success);"><?php echo $cartTotal >= 2999 ? 'FREE' : formatPrice(99); ?></span>
             </div>
             <div class="cart-summary-row">
               <span>Tax (GST 18%)</span>
@@ -95,7 +95,7 @@ $cartTotal = getCartTotal();
             </div>
             <div class="cart-summary-total">
               <span>Total</span>
-              <span id="cartGrandTotal" style="background: var(--grad-1); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+              <span id="cartGrandTotal" style="color: var(--primary); font-weight: 800;">
                 <?php 
                   $shipping = $cartTotal >= 2999 ? 0 : 99;
                   echo formatPrice($cartTotal + ($cartTotal * 0.18) + $shipping); 

@@ -231,7 +231,7 @@ require_once __DIR__ . '/../includes/header.php';
               <td><?php echo htmlspecialchars($product['brand_name']); ?></td>
               <td>
                 <?php if ($product['sale_price']): ?>
-                  <span style="color: var(--accent-green);"><?php echo formatPrice($product['sale_price']); ?></span>
+                  <span style="color: var(--success);"><?php echo formatPrice($product['sale_price']); ?></span>
                   <br><small style="text-decoration: line-through; color: var(--text-muted);"><?php echo formatPrice($product['price']); ?></small>
                 <?php else: ?>
                   <?php echo formatPrice($product['price']); ?>

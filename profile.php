@@ -65,7 +65,7 @@ require_once __DIR__ . '/includes/header.php';
       <div class="col-lg-3">
         <div class="glass-card reveal" style="padding: 24px;">
           <div class="text-center mb-4">
-            <div style="width: 72px; height: 72px; border-radius: 50%; background: var(--grad-1); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 1.8rem; font-weight: 800; color: #fff;">
+            <div style="width: 72px; height: 72px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 1.8rem; font-weight: 800; color: #fff;">
               <?php echo strtoupper(substr($user['name'], 0, 1)); ?>
             </div>
             <h5 style="font-family: var(--font-display); font-weight: 700;"><?php echo htmlspecialchars($user['name']); ?></h5>
@@ -148,7 +148,7 @@ require_once __DIR__ . '/includes/header.php';
                 <tbody>
                   <?php foreach ($orders as $order): ?>
                   <tr>
-                    <td><strong style="color: var(--accent-cyan);"><?php echo htmlspecialchars($order['order_number']); ?></strong></td>
+                    <td><strong style="color: var(--primary);"><?php echo htmlspecialchars($order['order_number']); ?></strong></td>
                     <td><?php echo date('M j, Y', strtotime($order['created_at'])); ?></td>
                     <td><strong><?php echo formatPrice($order['total']); ?></strong></td>
                     <td><?php echo htmlspecialchars($order['payment_method']); ?></td>

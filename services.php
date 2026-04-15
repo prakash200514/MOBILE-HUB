@@ -58,7 +58,7 @@ $user = isLoggedIn() ? getCurrentUser() : null;
       <div class="row g-4 mb-5">
         <div class="col-md-6 col-lg-4">
           <div class="service-card reveal reveal-delay-1">
-            <div class="service-card-icon" style="background: rgba(239,68,68,0.1); color: var(--accent-red);"><i class="bi bi-phone"></i></div>
+            <div class="service-card-icon" style="background: #fef2f2; color: #dc2626;"><i class="bi bi-phone"></i></div>
             <h3 class="service-card-title">Screen Repair</h3>
             <p class="service-card-desc">OEM-quality display replacement with warranty. Supports all major brands.</p>
             <div class="service-card-price">Starting from ₹1,499</div>
@@ -66,7 +66,7 @@ $user = isLoggedIn() ? getCurrentUser() : null;
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="service-card reveal reveal-delay-2">
-            <div class="service-card-icon" style="background: rgba(16,185,129,0.1); color: var(--accent-green);"><i class="bi bi-battery-charging"></i></div>
+            <div class="service-card-icon" style="background: #ecfdf5; color: #059669;"><i class="bi bi-battery-charging"></i></div>
             <h3 class="service-card-title">Battery Replacement</h3>
             <p class="service-card-desc">Genuine battery replacement to restore your phone's full-day battery life.</p>
             <div class="service-card-price">Starting from ₹999</div>
@@ -74,7 +74,7 @@ $user = isLoggedIn() ? getCurrentUser() : null;
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="service-card reveal reveal-delay-3">
-            <div class="service-card-icon" style="background: rgba(0,212,255,0.1); color: var(--accent-cyan);"><i class="bi bi-cpu"></i></div>
+            <div class="service-card-icon" style="background: #eff6ff; color: #2563eb;"><i class="bi bi-cpu"></i></div>
             <h3 class="service-card-title">Software Update</h3>
             <p class="service-card-desc">OS upgrades, malware removal, and performance optimization.</p>
             <div class="service-card-price">Starting from ₹499</div>
@@ -82,7 +82,7 @@ $user = isLoggedIn() ? getCurrentUser() : null;
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="service-card reveal reveal-delay-1">
-            <div class="service-card-icon" style="background: rgba(124,58,237,0.1); color: var(--accent-violet);"><i class="bi bi-droplet"></i></div>
+            <div class="service-card-icon" style="background: #f5f3ff; color: #7c3aed;"><i class="bi bi-droplet"></i></div>
             <h3 class="service-card-title">Water Damage Repair</h3>
             <p class="service-card-desc">Ultrasonic cleaning and component-level repair for water-damaged devices.</p>
             <div class="service-card-price">Starting from ₹1,999</div>
@@ -90,7 +90,7 @@ $user = isLoggedIn() ? getCurrentUser() : null;
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="service-card reveal reveal-delay-2">
-            <div class="service-card-icon" style="background: rgba(245,158,11,0.1); color: var(--accent-orange);"><i class="bi bi-camera"></i></div>
+            <div class="service-card-icon" style="background: #fffbeb; color: #d97706;"><i class="bi bi-camera"></i></div>
             <h3 class="service-card-title">Camera Repair</h3>
             <p class="service-card-desc">Fix blurry images, broken lens, or camera module with precision tools.</p>
             <div class="service-card-price">Starting from ₹1,299</div>
@@ -98,7 +98,7 @@ $user = isLoggedIn() ? getCurrentUser() : null;
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="service-card reveal reveal-delay-3">
-            <div class="service-card-icon" style="background: rgba(232,121,249,0.1); color: var(--accent-pink);"><i class="bi bi-shield-check"></i></div>
+            <div class="service-card-icon" style="background: #fdf4ff; color: #c026d3;"><i class="bi bi-shield-check"></i></div>
             <h3 class="service-card-title">General Checkup</h3>
             <p class="service-card-desc">Complete health check: diagnostics, cleaning, and system optimization.</p>
             <div class="service-card-price">Starting from ₹299</div>

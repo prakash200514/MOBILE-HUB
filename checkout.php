@@ -81,7 +81,7 @@ if (isset($_GET['success'])) {
         <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 8px;">Thank you for your purchase</p>
         <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; margin: 24px 0; display: inline-block;">
           <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Order Number</div>
-          <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--accent-cyan);"><?php echo htmlspecialchars($orderNumber); ?></div>
+          <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--primary);"><?php echo htmlspecialchars($orderNumber); ?></div>
         </div>
         <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 32px;">We'll send you an email confirmation with your order details shortly.</p>
         <div class="d-flex gap-3 justify-content-center flex-wrap">
@@ -134,7 +134,7 @@ $grandTotal = $cartTotal + $tax + $shipping;
         <div class="col-lg-8">
           <div class="form-glass reveal">
             <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 28px;">
-              <i class="bi bi-geo-alt me-2" style="color: var(--accent-cyan);"></i>Shipping Address
+              <i class="bi bi-geo-alt me-2" style="color: var(--primary);"></i>Shipping Address
             </h3>
             <div class="row g-3">
               <div class="col-md-6">
@@ -171,7 +171,7 @@ $grandTotal = $cartTotal + $tax + $shipping;
           <!-- Payment Method -->
           <div class="form-glass mt-4 reveal">
             <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 28px;">
-              <i class="bi bi-credit-card me-2" style="color: var(--accent-cyan);"></i>Payment Method
+              <i class="bi bi-credit-card me-2" style="color: var(--primary);"></i>Payment Method
             </h3>
             <div class="d-flex flex-column gap-3">
               <label class="d-flex align-items-center gap-3 p-3" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); cursor: pointer;">
@@ -203,7 +203,7 @@ $grandTotal = $cartTotal + $tax + $shipping;
               <div style="width: 50px; height: 50px; border-radius: var(--radius-sm); background: var(--bg-surface); display: flex; align-items: center; justify-content: center; padding: 5px; flex-shrink: 0;">
                 <img src="<?php echo SITE_URL; ?>/assets/images/products/<?php echo $item['image1'] ?? 'placeholder.png'; ?>" 
                      alt="" style="max-width: 100%; max-height: 100%; object-fit: contain;"
-                     onerror="this.src='https://placehold.co/50x50/0a0f1e/7c3aed?text=P'">
+                     onerror="this.src='https://placehold.co/50x50/f8fafc/2563eb?text=P'">
               </div>
               <div style="flex: 1; min-width: 0;">
                 <div style="font-size: 0.82rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo htmlspecialchars($item['name']); ?></div>
@@ -219,7 +219,7 @@ $grandTotal = $cartTotal + $tax + $shipping;
             </div>
             <div class="cart-summary-row">
               <span>Shipping</span>
-              <span style="color: var(--accent-green);"><?php echo $shipping === 0 ? 'FREE' : formatPrice($shipping); ?></span>
+              <span style="color: var(--success);"><?php echo $shipping === 0 ? 'FREE' : formatPrice($shipping); ?></span>
             </div>
             <div class="cart-summary-row">
               <span>Tax (GST 18%)</span>
@@ -227,7 +227,7 @@ $grandTotal = $cartTotal + $tax + $shipping;
             </div>
             <div class="cart-summary-total">
               <span>Total</span>
-              <span style="background: var(--grad-1); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;"><?php echo formatPrice($grandTotal); ?></span>
+              <span style="color: var(--primary); font-weight: 800;"><?php echo formatPrice($grandTotal); ?></span>
             </div>
 
             <button type="submit" class="btn-gradient w-100 justify-content-center mt-4" id="placeOrderBtn">
