@@ -1,0 +1,348 @@
+/* =============================================
+   MobileHub — Bootstrap 5 Dark Theme Overrides
+   ============================================= */
+
+/* ── Override Bootstrap variables via CSS ── */
+.bg-dark, .navbar-dark {
+  background-color: var(--bg-deep) !important;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+}
+
+/* ── Modals ── */
+.modal-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  backdrop-filter: blur(20px);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border);
+}
+
+.btn-close {
+  filter: invert(1) brightness(0.8);
+}
+
+/* ── Tables ── */
+.table {
+  color: var(--text-secondary);
+  --bs-table-bg: transparent;
+  --bs-table-hover-bg: var(--bg-card);
+}
+
+.table > thead > tr > th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px;
+}
+
+.table > tbody > tr > td {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-accent-bg: rgba(255,255,255,0.015);
+}
+
+/* ── Badges ── */
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+}
+
+.badge.bg-success {
+  background: rgba(16,185,129,0.15) !important;
+  color: var(--accent-green);
+  border: 1px solid rgba(16,185,129,0.3);
+}
+
+.badge.bg-warning {
+  background: rgba(245,158,11,0.15) !important;
+  color: var(--accent-orange);
+  border: 1px solid rgba(245,158,11,0.3);
+}
+
+.badge.bg-danger {
+  background: rgba(239,68,68,0.15) !important;
+  color: var(--accent-red);
+  border: 1px solid rgba(239,68,68,0.3);
+}
+
+.badge.bg-info {
+  background: rgba(0,212,255,0.15) !important;
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0,212,255,0.3);
+}
+
+.badge.bg-primary {
+  background: rgba(124,58,237,0.15) !important;
+  color: #a78bfa;
+  border: 1px solid rgba(124,58,237,0.3);
+}
+
+.badge.bg-secondary {
+  background: rgba(255,255,255,0.08) !important;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+/* ── Forms ── */
+.form-control,
+.form-select {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-main);
+  transition: var(--transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background: rgba(0,212,255,0.03);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+  color: var(--text-primary);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.form-check-input {
+  background-color: var(--bg-input);
+  border-color: var(--border);
+}
+
+.form-check-input:checked {
+  background-color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.form-check-label {
+  color: var(--text-secondary);
+}
+
+/* ── Buttons ── */
+.btn {
+  font-family: var(--font-main);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--grad-1);
+  border: none;
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 40px rgba(124,58,237,0.5);
+  transform: translateY(-1px);
+}
+
+.btn-outline-light {
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+.btn-outline-light:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: rgba(0,212,255,0.05);
+}
+
+/* ── Alerts ── */
+.alert {
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  font-size: 0.9rem;
+}
+
+.alert-success {
+  background: rgba(16,185,129,0.1);
+  border-color: rgba(16,185,129,0.3);
+  color: var(--accent-green);
+}
+
+.alert-danger {
+  background: rgba(239,68,68,0.1);
+  border-color: rgba(239,68,68,0.3);
+  color: var(--accent-red);
+}
+
+.alert-warning {
+  background: rgba(245,158,11,0.1);
+  border-color: rgba(245,158,11,0.3);
+  color: var(--accent-orange);
+}
+
+.alert-info {
+  background: rgba(0,212,255,0.1);
+  border-color: rgba(0,212,255,0.3);
+  color: var(--accent-cyan);
+}
+
+/* ── Dropdown ── */
+.dropdown-menu {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(20px);
+  padding: 8px;
+}
+
+.dropdown-item {
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  transition: var(--transition);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.dropdown-divider {
+  border-color: var(--border);
+}
+
+/* ── Offcanvas (mobile menu) ── */
+.offcanvas {
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border);
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.offcanvas-title {
+  color: var(--text-primary);
+}
+
+/* ── Pagination ── */
+.page-link {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.page-link:hover {
+  background: var(--bg-card);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.page-item.active .page-link {
+  background: var(--grad-1);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  --bs-breadcrumb-divider-color: var(--text-muted);
+  --bs-breadcrumb-item-active-color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.breadcrumb-item a {
+  color: var(--text-secondary);
+}
+
+.breadcrumb-item a:hover {
+  color: var(--accent-cyan);
+}
+
+/* ── Accordion ── */
+.accordion-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md) !important;
+  margin-bottom: 8px;
+}
+
+.accordion-button {
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background: transparent;
+  color: var(--accent-cyan);
+}
+
+.accordion-button::after {
+  filter: invert(1);
+}
+
+.accordion-body {
+  color: var(--text-secondary);
+}
+
+/* ── Nav Tabs ── */
+.nav-tabs {
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-tabs .nav-link {
+  color: var(--text-secondary);
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 20px;
+  font-weight: 600;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: transparent;
+  border-bottom-color: var(--text-muted);
+  color: var(--text-primary);
+}
+
+.nav-tabs .nav-link.active {
+  background: transparent;
+  border-color: transparent;
+  border-bottom-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
