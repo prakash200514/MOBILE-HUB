@@ -58,8 +58,8 @@ require_once __DIR__ . '/../includes/header.php';
     </aside>
 
     <!-- Main Content -->
-    <main class="admin-main-content">
-      <div class="d-flex justify-content-between align-items-end mb-5">
+    <div class="admin-main-content">
+      <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
           <h1 style="font-family: var(--font-display); font-weight: 900; font-size: 2.2rem; margin-bottom: 5px;">Dashboard</h1>
           <p style="color: var(--text-secondary); margin: 0;">Welcome back, <strong><?php echo htmlspecialchars($_SESSION['user_name']); ?></strong>!</p>
@@ -70,7 +70,7 @@ require_once __DIR__ . '/../includes/header.php';
       </div>
 
       <!-- Stats Grid -->
-      <div class="row g-4 mb-5">
+      <div class="row g-4 mb-4">
         <div class="col-md-6 col-lg-3">
           <div class="admin-stat-card-new admin-reveal">
             <div class="stat-icon-wrapper" style="background: rgba(124, 58, 237, 0.1); color: #7c3aed;">
@@ -110,11 +110,13 @@ require_once __DIR__ . '/../includes/header.php';
       </div>
 
       <!-- Charts Area -->
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col-lg-8">
           <div class="chart-container-card admin-reveal">
             <h5 class="mb-4" style="font-weight: 700;">Revenue Performance</h5>
-            <canvas id="revenueChart" height="250"></canvas>
+            <div style="height: 250px; position: relative;">
+              <canvas id="revenueChart"></canvas>
+            </div>
           </div>
         </div>
         <div class="col-lg-4">
@@ -170,7 +172,7 @@ require_once __DIR__ . '/../includes/header.php';
           </table>
         </div>
       </div>
-    </main>
+    </div>
   </div>
 
   <script src="<?php echo SITE_URL; ?>/assets/js/admin_charts.js" defer></script>
@@ -187,9 +189,9 @@ require_once __DIR__ . '/../includes/header.php';
         y: 30,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.15,
+        stagger: 0.1,
         ease: "power3.out",
-        delay: 0.3
+        delay: 0.2
       });
     });
   </script>
