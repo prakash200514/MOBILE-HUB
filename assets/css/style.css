@@ -1506,9 +1506,9 @@ main { position: relative; z-index: 1; padding-top: 0; }
    PAGE ELEMENTS
    ============================================= */
 .page-header {
-  padding: 32px 0 24px;
+  padding: 16px 0 16px;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .page-header-title {
@@ -1521,7 +1521,7 @@ main { position: relative; z-index: 1; padding-top: 0; }
 
 .page-header-desc { color: var(--text-secondary); font-size: 0.9rem; }
 
-.mh-breadcrumb { padding: 16px 0; }
+.mh-breadcrumb { padding: 12px 0 0; }
 .mh-breadcrumb ol { display: flex; gap: 8px; list-style: none; padding: 0; margin: 0; align-items: center; }
 .mh-breadcrumb li { font-size: 0.82rem; color: var(--text-muted); }
 .mh-breadcrumb li a { color: var(--text-secondary); }
@@ -1532,7 +1532,7 @@ main { position: relative; z-index: 1; padding-top: 0; }
 .mh-pagination a:hover { border-color: var(--primary); color: var(--primary); }
 .mh-pagination .active { background: var(--primary); border-color: var(--primary); color: #fff; }
 
-.empty-state { text-align: center; padding: 60px 30px; }
+.empty-state { text-align: center; padding: 30px 30px 60px; }
 .empty-state-icon { font-size: 3.5rem; margin-bottom: 16px; }
 .empty-state-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
 .empty-state-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px; }

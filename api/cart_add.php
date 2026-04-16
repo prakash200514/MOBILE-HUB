@@ -67,8 +67,16 @@ if ($existing) {
     $stmt->close();
 }
 
+// Get current qty for this product in cart
+$stmt = $conn->prepare("SELECT quantity FROM cart WHERE user_id = ? AND product_id = ?");
+$stmt->bind_param("ii", $userId, $productId);
+$stmt->execute();
+$currentQty = $stmt->get_result()->fetch_assoc()['quantity'] ?? 0;
+$stmt->close();
+
 echo json_encode([
     'success' => true,
     'message' => $product['name'] . ' added to cart!',
-    'cart_count' => getCartCount()
+    'cart_count' => getCartCount(),
+    'product_qty' => $currentQty
 ]);

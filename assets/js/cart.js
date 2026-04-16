@@ -25,7 +25,8 @@ function addToCart(productId, button) {
     if (data.success) {
       showToast(data.message || 'Added to cart!', 'success');
       updateCartBadge(data.cart_count);
-      button.innerHTML = '<i class="bi bi-check-lg"></i> Added!';
+      const qtyText = data.product_qty > 1 ? ` (${data.product_qty})` : '';
+      button.innerHTML = `<i class="bi bi-check-lg"></i> Added${qtyText}!`;
       setTimeout(() => {
         button.innerHTML = originalText;
         button.disabled = false;
