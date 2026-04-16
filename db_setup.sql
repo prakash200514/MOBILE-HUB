@@ -135,11 +135,11 @@ CREATE TABLE IF NOT EXISTS reviews (
 -- =============================================
 
 -- ── Admin User (password: admin123) ──
-INSERT INTO users (name, email, phone, password, role) VALUES
-('Admin', 'admin@mobilehub.com', '+91 98765 43210', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
+INSERT IGNORE INTO users (name, email, phone, password, role) VALUES
+('Admin', 'admin@mobilehub.com', '+91 98765 43210', '$2y$10$WsWRf8IpXUUAJBhO100r7uDgfRGV1.IaabUgxMLMFLuQ/WSsYPbhq', 'admin');
 
 -- ── Categories ──
-INSERT INTO categories (name, slug, icon, description, sort_order) VALUES
+INSERT IGNORE INTO categories (name, slug, icon, description, sort_order) VALUES
 ('Smartphones', 'smartphones', 'bi-phone', 'Latest smartphones from top brands', 1),
 ('Tablets', 'tablets', 'bi-tablet', 'Premium tablets for work and play', 2),
 ('Earbuds & Audio', 'earbuds-audio', 'bi-earbuds', 'Wireless earbuds and headphones', 3),
@@ -148,7 +148,7 @@ INSERT INTO categories (name, slug, icon, description, sort_order) VALUES
 ('Power Banks', 'power-banks', 'bi-battery-charging', 'Portable power solutions', 6);
 
 -- ── Brands ──
-INSERT INTO brands (name, slug) VALUES
+INSERT IGNORE INTO brands (name, slug) VALUES
 ('Apple', 'apple'),
 ('Samsung', 'samsung'),
 ('OnePlus', 'oneplus'),
@@ -161,7 +161,7 @@ INSERT INTO brands (name, slug) VALUES
 ('Motorola', 'motorola');
 
 -- ── Sample Products ──
-INSERT INTO products (category_id, brand_id, name, slug, description, specifications, price, sale_price, stock, featured) VALUES
+INSERT IGNORE INTO products (category_id, brand_id, name, slug, description, specifications, price, sale_price, stock, featured) VALUES
 -- Apple
 (1, 1, 'iPhone 16 Pro Max', 'iphone-16-pro-max',
 'The most advanced iPhone ever. Featuring the A18 Pro chip, a 48MP camera system with 5x optical zoom, and an always-on display with ProMotion technology.',
