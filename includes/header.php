@@ -32,6 +32,8 @@ $categories = getCategories();
   <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="<?php echo SITE_URL; ?>/assets/css/style.css">
   <link rel="stylesheet" href="<?php echo SITE_URL; ?>/assets/css/bootstrap-overrides.css">
@@ -148,7 +150,7 @@ $categories = getCategories();
     </div>
   </div>
 
-  <main>
+
   <?php
   // Flash messages
   $flash = getFlash();

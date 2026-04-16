@@ -22,136 +22,176 @@ $currentAdminPage = 'dashboard';
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-  <div class="container-custom">
-    <div class="page-header">
-      <h1 class="page-header-title"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</h1>
-      <p class="page-header-desc">Welcome back, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</p>
-    </div>
-  </div>
+  <div class="admin-wrapper">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="px-3 mb-4">
+        <h5 style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); font-weight: 700;">Menu</h5>
+      </div>
+      <a href="<?php echo SITE_URL; ?>/admin/" class="admin-sidebar-link active">
+        <i class="bi bi-speedometer2"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="<?php echo SITE_URL; ?>/admin/products.php" class="admin-sidebar-link">
+        <i class="bi bi-box"></i>
+        <span>Products</span>
+      </a>
+      <a href="<?php echo SITE_URL; ?>/admin/orders.php" class="admin-sidebar-link">
+        <i class="bi bi-bag-check"></i>
+        <span>Orders</span>
+      </a>
+      <a href="<?php echo SITE_URL; ?>/admin/services.php" class="admin-sidebar-link">
+        <i class="bi bi-tools"></i>
+        <span>Services</span>
+      </a>
+      <a href="<?php echo SITE_URL; ?>/admin/users.php" class="admin-sidebar-link">
+        <i class="bi bi-people"></i>
+        <span>Users</span>
+      </a>
+      
+      <div class="mt-auto px-1">
+        <a href="<?php echo SITE_URL; ?>/login.php?action=logout" class="admin-sidebar-link" style="color: #f87171;">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
 
-  <div class="container-custom" style="padding-bottom: 80px;">
-    <!-- Admin Nav -->
-    <div class="d-flex gap-2 flex-wrap mb-4 reveal">
-      <a href="<?php echo SITE_URL; ?>/admin/" class="btn-gradient btn-gradient-sm"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a>
-      <a href="<?php echo SITE_URL; ?>/admin/products.php" class="btn-outline-glow" style="font-size: 0.82rem; padding: 10px 20px;"><i class="bi bi-box me-1"></i>Products</a>
-      <a href="<?php echo SITE_URL; ?>/admin/orders.php" class="btn-outline-glow" style="font-size: 0.82rem; padding: 10px 20px;"><i class="bi bi-bag-check me-1"></i>Orders</a>
-      <a href="<?php echo SITE_URL; ?>/admin/services.php" class="btn-outline-glow" style="font-size: 0.82rem; padding: 10px 20px;"><i class="bi bi-tools me-1"></i>Services</a>
-      <a href="<?php echo SITE_URL; ?>/admin/users.php" class="btn-outline-glow" style="font-size: 0.82rem; padding: 10px 20px;"><i class="bi bi-people me-1"></i>Users</a>
-    </div>
+    <!-- Main Content -->
+    <main class="admin-main-content">
+      <div class="d-flex justify-content-between align-items-end mb-5">
+        <div>
+          <h1 style="font-family: var(--font-display); font-weight: 900; font-size: 2.2rem; margin-bottom: 5px;">Dashboard</h1>
+          <p style="color: var(--text-secondary); margin: 0;">Welcome back, <strong><?php echo htmlspecialchars($_SESSION['user_name']); ?></strong>!</p>
+        </div>
+        <div class="d-none d-md-block text-end">
+          <div style="font-size: 0.8rem; color: var(--text-muted);"><?php echo date('l, F j, Y'); ?></div>
+        </div>
+      </div>
 
-    <!-- Stats Grid -->
-    <div class="row g-4 mb-5">
-      <div class="col-md-6 col-lg-3">
-        <div class="admin-stat-card reveal reveal-delay-1">
-          <div class="admin-stat-icon" style="background: #f5f3ff; color: #7c3aed;">
-            <i class="bi bi-bag-check"></i>
+      <!-- Stats Grid -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+          <div class="admin-stat-card-new admin-reveal">
+            <div class="stat-icon-wrapper" style="background: rgba(124, 58, 237, 0.1); color: #7c3aed;">
+              <i class="bi bi-bag-check"></i>
+            </div>
+            <div class="stat-value"><?php echo $totalOrders; ?></div>
+            <div class="stat-label">Total Orders</div>
           </div>
-          <div>
-            <div class="admin-stat-num"><?php echo $totalOrders; ?></div>
-            <div class="admin-stat-label">Total Orders</div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="admin-stat-card-new admin-reveal">
+            <div class="stat-icon-wrapper" style="background: rgba(5, 150, 105, 0.1); color: #059669;">
+              <i class="bi bi-currency-rupee"></i>
+            </div>
+            <div class="stat-value"><?php echo number_format($totalRevenue); ?></div>
+            <div class="stat-label">Total Revenue</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="admin-stat-card-new admin-reveal">
+            <div class="stat-icon-wrapper" style="background: rgba(37, 99, 235, 0.1); color: #2563eb;">
+              <i class="bi bi-box"></i>
+            </div>
+            <div class="stat-value"><?php echo $totalProducts; ?></div>
+            <div class="stat-label">Products In Stock</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="admin-stat-card-new admin-reveal">
+            <div class="stat-icon-wrapper" style="background: rgba(217, 119, 6, 0.1); color: #d97706;">
+              <i class="bi bi-people"></i>
+            </div>
+            <div class="stat-value"><?php echo $totalUsers; ?></div>
+            <div class="stat-label">Total Customers</div>
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="admin-stat-card reveal reveal-delay-2">
-          <div class="admin-stat-icon" style="background: #ecfdf5; color: #059669;">
-            <i class="bi bi-currency-rupee"></i>
-          </div>
-          <div>
-            <div class="admin-stat-num"><?php echo formatPrice($totalRevenue); ?></div>
-            <div class="admin-stat-label">Total Revenue</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="admin-stat-card reveal reveal-delay-3">
-          <div class="admin-stat-icon" style="background: #eff6ff; color: #2563eb;">
-            <i class="bi bi-box"></i>
-          </div>
-          <div>
-            <div class="admin-stat-num"><?php echo $totalProducts; ?></div>
-            <div class="admin-stat-label">Products</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="admin-stat-card reveal reveal-delay-4">
-          <div class="admin-stat-icon" style="background: #fffbeb; color: #d97706;">
-            <i class="bi bi-people"></i>
-          </div>
-          <div>
-            <div class="admin-stat-num"><?php echo $totalUsers; ?></div>
-            <div class="admin-stat-label">Customers</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Quick Stats -->
-    <div class="row g-4 mb-5">
-      <div class="col-md-4">
-        <div class="glass-card text-center reveal">
-          <div style="font-size: 2rem; margin-bottom: 8px;">⏳</div>
-          <div style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); color: var(--warning);"><?php echo $pendingOrders; ?></div>
-          <div style="font-size: 0.85rem; color: var(--text-secondary);">Pending Orders</div>
+      <!-- Charts Area -->
+      <div class="row mb-5">
+        <div class="col-lg-8">
+          <div class="chart-container-card admin-reveal">
+            <h5 class="mb-4" style="font-weight: 700;">Revenue Performance</h5>
+            <canvas id="revenueChart" height="250"></canvas>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="chart-container-card admin-reveal" style="height: 100%;">
+            <h5 class="mb-4" style="font-weight: 700;">Order Distribution</h5>
+            <div class="d-flex flex-column gap-4 mt-4">
+              <div class="text-center py-4">
+                 <div style="font-size: 3rem; margin-bottom: 10px;">⏳</div>
+                 <div class="stat-value" style="color: var(--warning);"><?php echo $pendingOrders; ?></div>
+                 <div class="stat-label">Orders Pending</div>
+              </div>
+              <div class="text-center py-4 border-top">
+                 <div style="font-size: 3rem; margin-bottom: 10px;">🔧</div>
+                 <div class="stat-value" style="color: var(--primary);"><?php echo $totalServices; ?></div>
+                 <div class="stat-label">Service Requests</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="glass-card text-center reveal">
-          <div style="font-size: 2rem; margin-bottom: 8px;">🔧</div>
-          <div style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); color: var(--primary);"><?php echo $totalServices; ?></div>
-          <div style="font-size: 0.85rem; color: var(--text-secondary);">Service Bookings</div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="glass-card text-center reveal">
-          <div style="font-size: 2rem; margin-bottom: 8px;">📈</div>
-          <div style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); color: var(--success);"><?php echo formatPrice($totalOrders > 0 ? $totalRevenue / $totalOrders : 0); ?></div>
-          <div style="font-size: 0.85rem; color: var(--text-secondary);">Avg Order Value</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Recent Orders -->
-    <div class="glass-card reveal">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin: 0;">Recent Orders</h3>
-        <a href="<?php echo SITE_URL; ?>/admin/orders.php" class="btn-outline-glow" style="font-size: 0.8rem; padding: 8px 16px;">View All</a>
-      </div>
-      <?php if (empty($recentOrders)): ?>
-        <p style="color: var(--text-muted); text-align: center; padding: 30px;">No orders yet</p>
-      <?php else: ?>
+      <!-- Recent Orders Table -->
+      <div class="admin-table-card admin-reveal">
+        <div class="table-header-custom">
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin: 0;">Recent Transactions</h3>
+          <a href="<?php echo SITE_URL; ?>/admin/orders.php" class="btn btn-sm btn-link text-decoration-none fw-bold" style="font-size: 0.8rem;">View All Orders <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
         <div class="table-responsive">
-          <table class="table">
-            <thead>
+          <table class="table table-hover align-middle mb-0" style="font-size: 0.9rem;">
+            <thead class="bg-light">
               <tr>
-                <th>Order #</th>
+                <th class="ps-4">Order Code</th>
                 <th>Customer</th>
                 <th>Total</th>
-                <th>Payment</th>
                 <th>Status</th>
-                <th>Date</th>
+                <th class="pe-4">Date</th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($recentOrders as $order): ?>
               <tr>
-                <td><strong style="color: var(--primary);"><?php echo htmlspecialchars($order['order_number']); ?></strong></td>
+                <td class="ps-4"><code><?php echo htmlspecialchars($order['order_number']); ?></code></td>
                 <td>
-                  <div><?php echo htmlspecialchars($order['user_name']); ?></div>
+                  <div class="fw-bold"><?php echo htmlspecialchars($order['user_name']); ?></div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);"><?php echo htmlspecialchars($order['user_email']); ?></div>
                 </td>
-                <td><strong><?php echo formatPrice($order['total']); ?></strong></td>
-                <td><?php echo $order['payment_method']; ?></td>
+                <td><span class="fw-bold">₹<?php echo number_format($order['total']); ?></span></td>
                 <td><?php echo statusBadge($order['status']); ?></td>
-                <td><?php echo date('M j, Y', strtotime($order['created_at'])); ?></td>
+                <td class="pe-4 text-muted"><?php echo date('M j, Y', strtotime($order['created_at'])); ?></td>
               </tr>
               <?php endforeach; ?>
             </tbody>
           </table>
         </div>
-      <?php endif; ?>
-    </div>
+      </div>
+    </main>
   </div>
+
+  <script src="<?php echo SITE_URL; ?>/assets/js/admin_charts.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // GSAP Entrance Animations
+      gsap.from(".admin-sidebar", {
+        x: -260,
+        duration: 0.8,
+        ease: "power3.out"
+      });
+
+      gsap.from(".admin-reveal", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+        delay: 0.3
+      });
+    });
+  </script>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>
