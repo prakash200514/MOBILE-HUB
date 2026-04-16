@@ -143,6 +143,7 @@ main { position: relative; z-index: 1; padding-top: 0; }
 .navbar-main {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 24px;
   padding: 12px 0;
   max-width: 1320px;
@@ -1692,7 +1693,7 @@ main { position: relative; z-index: 1; padding-top: 0; }
 
 .top-cat-list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 32px;
   max-width: 1320px;
   margin: 0 auto;
