@@ -6,7 +6,7 @@
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', ''); // Set to empty for standard XAMPP setup
+define('DB_PASS', 'password'); // Set to empty for standard XAMPP setup
 define('DB_NAME', 'mobilehub_db');
 
 // Site configuration

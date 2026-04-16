@@ -9,11 +9,24 @@ echo "<h1>MobileHub Login Diagnostic</h1>";
 
 // 1. Check Connection
 if ($conn->connect_error) {
-    echo "<p style='color:red;'>❌ Database Connection Failed: " . $conn->connect_error . "</p>";
-    echo "<p>Please check your <code>includes/db.php</code> settings.</p>";
+    echo "<p style='color:red; font-weight:bold; font-size:1.2rem;'>❌ Database Connection Failed</p>";
+    echo "<div style='background:#fff5f5; border:1px solid #feb2b2; padding:15px; border-radius:8px; margin-bottom:20px;'>";
+    echo "<strong>Error Message:</strong> <code style='color:#c53030;'>" . htmlspecialchars($conn->connect_error) . "</code><br>";
+    echo "<strong>Error Code:</strong> <code>" . $conn->connect_errno . "</code>";
+    echo "</div>";
+    
+    echo "<h3>How to fix this:</h3>";
+    echo "<ol>";
+    echo "<li>Open <code>includes/db.php</code></li>";
+    echo "<li>Check the <code>DB_PASS</code> value.</li>";
+    echo "<li>If you use a password for <b>MySQL Workbench</b>, put that same password inside the quotes for <code>DB_PASS</code>.</li>";
+    echo "<li>If you don't use a password, make sure it is empty: <code>define('DB_PASS', '');</code></li>";
+    echo "</ol>";
+    echo "<p><i>Common error (1045): This means the password you provided is wrong.</i></p>";
     exit;
 } else {
-    echo "<p style='color:green;'>✅ Database Connected Successfully (Host: " . DB_HOST . ", DB: " . DB_NAME . ")</p>";
+    echo "<p style='color:green; font-weight:bold;'>✅ Database Connected Successfully!</p>";
+    echo "<p style='font-size:0.85rem; color: #666;'>Connected to <b>" . DB_NAME . "</b> as <b>" . DB_USER . "</b></p>";
 }
 
 // 2. Check for Admin User
