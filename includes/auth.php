@@ -16,6 +16,7 @@ function registerUser($name, $email, $phone, $password) {
     $stmt->bind_param("s", $email);
     $stmt->execute();
     if ($stmt->get_result()->num_rows > 0) {
+        $stmt->close();
         return ['success' => false, 'message' => 'Email already registered'];
     }
     $stmt->close();
@@ -50,13 +51,14 @@ function loginUser($email, $password) {
     
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-        $stmt->close();
         
         if (!$user['status']) {
+            $stmt->close();
             return ['success' => false, 'message' => 'Account has been deactivated'];
         }
         
         if (password_verify($password, $user['password'])) {
+            $stmt->close();
             loginSession($user['id'], $user['name'], $user['email'], $user['role']);
             return ['success' => true, 'message' => 'Login successful', 'role' => $user['role']];
         }

@@ -10,101 +10,200 @@ $categories = getCategories();
 
 // Get new arrivals (latest products)
 $newArrivals = $conn->query("SELECT p.*, b.name as brand_name FROM products p JOIN brands b ON p.brand_id = b.id WHERE p.status = 1 ORDER BY p.created_at DESC LIMIT 4")->fetch_all(MYSQLI_ASSOC);
+
+// Get brands for exploration bar
+$allBrands = $conn->query("SELECT * FROM brands ORDER BY name ASC")->fetch_all(MYSQLI_ASSOC);
 ?>
 
-  <!-- ══════════════════════════════════════════
-       HERO BANNER
-       ══════════════════════════════════════════ -->
-  <section class="hero-section">
-    <div class="container-custom" style="padding-top: 24px;">
-      <div class="hero-banner reveal">
-        <div class="hero-content">
-          <div class="hero-badge">🔥 New Launch</div>
-          <h1 class="hero-title">
-            Upgrade to the <span class="gradient-text">Latest Smartphones</span>
-          </h1>
-          <p class="hero-desc">
-            Get up to 40% off on flagship devices. Free delivery on orders above ₹2,999. EMI options available.
-          </p>
-          <div class="hero-actions">
-            <a href="<?php echo SITE_URL; ?>/shop.php" class="btn-gradient" id="hero-shop-btn">
-              <i class="bi bi-bag"></i> Shop Now
-            </a>
-            <a href="<?php echo SITE_URL; ?>/shop.php?sort=newest" class="btn-outline-glow" style="background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3);">
-              <i class="bi bi-stars"></i> New Arrivals
-            </a>
+  <!-- ── TOP CATEGORY BAR (Flipkart Style) ── -->
+  <div class="top-cat-bar no-print">
+    <div class="top-cat-list">
+      <?php 
+      $topCats = [
+        ['name' => 'Mobiles', 'slug' => 'smartphones', 'icon' => '📱'],
+        ['name' => 'Tablets', 'slug' => 'tablets', 'icon' => '📟'],
+        ['name' => 'Audio', 'slug' => 'earbuds-audio', 'icon' => '🎧'],
+        ['name' => 'Watches', 'slug' => 'smartwatches', 'icon' => '⌚'],
+        ['name' => 'Accessories', 'slug' => 'accessories', 'icon' => '🔌'],
+        ['name' => 'Power Banks', 'slug' => 'power-banks', 'icon' => '🔋'],
+        ['name' => 'Services', 'slug' => 'services', 'icon' => '🛠️']
+      ];
+      foreach ($topCats as $tc): 
+      ?>
+      <a href="<?php echo $tc['slug'] === 'services' ? SITE_URL . '/services.php' : SITE_URL . '/shop.php?category=' . $tc['slug']; ?>" class="top-cat-item">
+        <div class="top-cat-icon"><?php echo $tc['icon']; ?></div>
+        <div class="top-cat-label"><?php echo $tc['name']; ?></div>
+      </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+
+  <!-- ── HERO CAROUSEL ── -->
+  <section class="section-padding pb-0">
+    <div class="container-custom">
+      <div id="heroCarousel" class="carousel slide main-carousel" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+          <!-- Slide 1: Mobile Launch -->
+          <div class="carousel-item active" style="background-image: url('<?php echo SITE_URL; ?>/assets/images/banners/hero_mobile_launch.png');">
+            <div class="carousel-caption-custom">
+              <div class="hero-badge" style="background: var(--accent); border-color: transparent;">Flash Sale</div>
+              <h1 class="carousel-title">iPhone 16 Pro<br><span style="color: var(--accent-light);">The Ultimate Power</span></h1>
+              <p class="carousel-subtitle">Get up to ₹10,000 instant discount with HDFC cards.</p>
+              <a href="<?php echo SITE_URL; ?>/product.php?slug=iphone-16-pro-max" class="btn-primary-solid px-5 py-3">
+                Pre-order Now <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Slide 2: Accessories -->
+          <div class="carousel-item" style="background-image: url('<?php echo SITE_URL; ?>/assets/images/banners/hero_accessories.png');">
+            <div class="carousel-caption-custom">
+              <div class="hero-badge">Limited Offer</div>
+              <h1 class="carousel-title">Premium Gear<br>for your Tech</h1>
+              <p class="carousel-subtitle">Flat 20% OFF on all original accessories this week.</p>
+              <a href="<?php echo SITE_URL; ?>/shop.php?category=accessories" class="btn-primary-solid px-5 py-3">
+                Explore Deals <i class="bi bi-bag-plus ms-2"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Slide 3: Service -->
+          <div class="carousel-item" style="background-color: #0f172a; border-left: 10px solid var(--primary);">
+            <div class="carousel-caption-custom">
+              <div class="hero-badge" style="background: var(--success); border-color: transparent;">Expert Care</div>
+              <h1 class="carousel-title">Broken Screen?<br>We've got you.</h1>
+              <p class="carousel-subtitle">Same-day repair service with 100% genuine brand parts.</p>
+              <a href="<?php echo SITE_URL; ?>/services.php" class="btn-primary-solid px-5 py-3" style="background: var(--success);">
+                Book Repair <i class="bi bi-tools ms-2"></i>
+              </a>
+            </div>
           </div>
         </div>
-        <div class="hero-phone-showcase d-none d-lg-block">
-          <svg class="hero-phone-img" width="220" height="340" viewBox="0 0 220 340" fill="none">
-            <rect x="6" y="6" width="208" height="328" rx="32" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
-            <rect x="18" y="42" width="184" height="258" rx="6" fill="rgba(255,255,255,0.06)"/>
-            <circle cx="110" cy="24" r="5" fill="rgba(255,255,255,0.15)"/>
-            <rect x="85" y="314" width="50" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-            <rect x="35" y="60" width="150" height="85" rx="10" fill="rgba(255,255,255,0.1)"/>
-            <text x="110" y="110" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="11" font-weight="600">MobileHub</text>
-            <rect x="35" y="160" width="70" height="70" rx="10" fill="rgba(255,255,255,0.07)"/>
-            <rect x="115" y="160" width="70" height="70" rx="10" fill="rgba(255,255,255,0.07)"/>
-            <rect x="35" y="245" width="150" height="40" rx="20" fill="rgba(255,255,255,0.15)"/>
-            <text x="110" y="270" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="sans-serif" font-size="12" font-weight="700">Shop Now</text>
-          </svg>
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
       </div>
 
-      <!-- Promo Cards -->
-      <div class="promo-grid reveal">
-        <div class="promo-card">
-          <div class="promo-card-icon" style="background: #eff6ff; color: #2563eb;">🚚</div>
-          <div>
-            <div class="promo-card-title">Free Delivery</div>
-            <div class="promo-card-desc">Orders above ₹2,999</div>
+      <!-- Quick Info Bar (Flipkart Style) -->
+      <div class="deal-banners-grid no-print">
+        <div class="deal-banner-item" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: #fff;">
+          <div class="deal-banner-content">
+            <span class="deal-banner-tag">Trending</span>
+            <h3 class="deal-banner-title">Smart Savings</h3>
+            <p>On Tablets & iPads</p>
+            <a href="#" class="text-white fw-bold small text-decoration-underline">Shop Now</a>
           </div>
+          <div style="position: absolute; right: -20px; bottom: -20px; font-size: 8rem; opacity: 0.15;">📟</div>
         </div>
-        <div class="promo-card">
-          <div class="promo-card-icon" style="background: #ecfdf5; color: #059669;">✅</div>
-          <div>
-            <div class="promo-card-title">100% Genuine</div>
-            <div class="promo-card-desc">Brand warranty included</div>
+        <div class="deal-banner-item" style="background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%); color: #fff;">
+          <div class="deal-banner-content">
+            <span class="deal-banner-tag" style="background: #fff; color: #ea580c;">New</span>
+            <h3 class="deal-banner-title">Best of Audio</h3>
+            <p>Buds, Speakers & more</p>
+            <a href="#" class="text-white fw-bold small text-decoration-underline">Grab Deals</a>
           </div>
+          <div style="position: absolute; right: -20px; bottom: -20px; font-size: 8rem; opacity: 0.15;">🎧</div>
         </div>
-        <div class="promo-card">
-          <div class="promo-card-icon" style="background: #fef3c7; color: #d97706;">🔄</div>
-          <div>
-            <div class="promo-card-title">Easy Returns</div>
-            <div class="promo-card-desc">7-day return policy</div>
+        <div class="deal-banner-item" style="background: linear-gradient(135deg, #065f46 0%, #10b981 100%); color: #fff;">
+          <div class="deal-banner-content">
+            <span class="deal-banner-tag" style="background: #fff; color: #10b981;">Exclusive</span>
+            <h3 class="deal-banner-title">Refurbished</h3>
+            <p>Quality at half price</p>
+            <a href="#" class="text-white fw-bold small text-decoration-underline">Explore More</a>
           </div>
+          <div style="position: absolute; right: -10px; bottom: -10px; font-size: 8rem; opacity: 0.15;">♻️</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       BRAND MARQUEE
-       ══════════════════════════════════════════ -->
-  <div class="brand-marquee" style="margin-top: 32px;">
-    <div class="brand-track">
-      <span class="brand-item">Apple</span>
-      <span class="brand-item">Samsung</span>
-      <span class="brand-item">OnePlus</span>
-      <span class="brand-item">Xiaomi</span>
-      <span class="brand-item">Google</span>
-      <span class="brand-item">Vivo</span>
-      <span class="brand-item">Realme</span>
-      <span class="brand-item">Nothing</span>
-      <span class="brand-item">Oppo</span>
-      <span class="brand-item">Motorola</span>
-      <span class="brand-item">Apple</span>
-      <span class="brand-item">Samsung</span>
-      <span class="brand-item">OnePlus</span>
-      <span class="brand-item">Xiaomi</span>
-      <span class="brand-item">Google</span>
-      <span class="brand-item">Vivo</span>
-      <span class="brand-item">Realme</span>
-      <span class="brand-item">Nothing</span>
-      <span class="brand-item">Oppo</span>
-      <span class="brand-item">Motorola</span>
+  <!-- ── BRAND EXPLORATION BAR (Flipkart Style) ── -->
+  <div class="container-custom no-print reveal">
+    <div class="brand-nav-section">
+      <div class="brand-nav-scroll">
+        <?php 
+        $brandIcons = [
+          'apple' => '🍎',
+          'samsung' => '📱',
+          'google' => '💎',
+          'oneplus' => '⚡',
+          'xiaomi' => '🍊',
+          'vivo' => '🔹',
+          'realme' => '⭐',
+          'nothing' => '🔳',
+          'oppo' => '🟢',
+          'motorola' => 'Ⓜ️'
+        ];
+        foreach ($allBrands as $brand): 
+          $slug = strtolower($brand['slug']);
+          $icon = $brandIcons[$slug] ?? '🔥';
+        ?>
+        <a href="<?php echo SITE_URL; ?>/shop.php?brand=<?php echo $brand['id']; ?>" class="brand-explore-card">
+          <div class="brand-explore-icon"><?php echo $icon; ?></div>
+          <div class="brand-explore-name"><?php echo htmlspecialchars($brand['name']); ?></div>
+        </a>
+        <?php endforeach; ?>
+      </div>
     </div>
   </div>
+
+  <!-- ── SPECIAL OFFERS SECTION (Flipkart style) ── -->
+  <section class="offers-section no-print reveal">
+    <div class="container-custom">
+      <div class="section-eyebrow">🚀 Super Value Week</div>
+      <div class="offers-scroll">
+        <!-- Card 1 -->
+        <div class="offer-card offer-card-1">
+          <div class="offer-badge">Best Seller</div>
+          <div class="offer-content">
+            <h3 class="offer-title">Realme P4 Power</h3>
+            <div class="offer-price">From <strong>₹25,999*</strong></div>
+            <p class="mt-2 small">India's Biggest 6000mAh Battery</p>
+          </div>
+          <img src="https://placehold.co/400x400/7c3aed/ffffff?text=Realme+P4" alt="Realme P4" class="offer-img-floating">
+        </div>
+        <!-- Card 2 -->
+        <div class="offer-card offer-card-2">
+          <div class="offer-badge">Hot Deal</div>
+          <div class="offer-content">
+            <h3 class="offer-title">Note 50s 5G+</h3>
+            <div class="offer-price">Just <strong>₹17,250</strong></div>
+            <p class="mt-2 small">Slimmest 144Hz Curved Displays</p>
+          </div>
+          <img src="https://placehold.co/400x400/db2777/ffffff?text=Note+50s" alt="Note 50s" class="offer-img-floating">
+        </div>
+        <!-- Card 3 -->
+        <div class="offer-card offer-card-3">
+          <div class="offer-badge">Luxury</div>
+          <div class="offer-content">
+            <h3 class="offer-title">POVA Curve 2</h3>
+            <div class="offer-price">From <strong>₹26,999*</strong></div>
+            <p class="mt-2 small">World's Slimmest 8000mAh Curve Dis.</p>
+          </div>
+          <img src="https://placehold.co/400x400/1e3a8a/ffffff?text=POVA+Curve" alt="POVA Curve" class="offer-img-floating">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURED BRAND BANNER (Flipkart style) ── -->
+  <section class="featured-brand-section no-print reveal">
+    <div class="container-custom">
+      <div class="brand-launch-banner">
+        <a href="<?php echo SITE_URL; ?>/shop.php?brand=10" class="brand-launch-link"></a>
+        <img src="<?php echo SITE_URL; ?>/assets/images/banners/brand_banner_motorola.png" alt="Motorola Edge 70 Pro Launch">
+        <div class="brand-launch-overlay">
+          <!-- Text is already baked into the image, but we could add dynamic elements here if needed -->
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ══════════════════════════════════════════
        CATEGORIES

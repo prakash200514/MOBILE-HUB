@@ -104,29 +104,9 @@ $categories = getCategories();
           <i class="bi bi-list" style="font-size: 1.5rem;"></i>
         </button>
       </div>
-    </div>
-
-    <!-- Category Navigation Bar (Desktop) -->
-    <div class="category-nav d-none d-md-block">
-      <div class="category-nav-inner">
-        <a href="<?php echo SITE_URL; ?>/" class="category-nav-link <?php echo $currentPage === 'index' ? 'active' : ''; ?>">
-          <i class="bi bi-house me-1"></i> Home
-        </a>
-        <a href="<?php echo SITE_URL; ?>/shop.php" class="category-nav-link <?php echo ($currentPage === 'shop' && empty($_GET['category'])) ? 'active' : ''; ?>">
-          All Products
-        </a>
-        <?php foreach ($categories as $cat): ?>
-          <a href="<?php echo SITE_URL; ?>/shop.php?category=<?php echo $cat['slug']; ?>" 
-             class="category-nav-link <?php echo (isset($_GET['category']) && $_GET['category'] === $cat['slug']) ? 'active' : ''; ?>">
-            <?php echo htmlspecialchars($cat['name']); ?>
-          </a>
-        <?php endforeach; ?>
-        <a href="<?php echo SITE_URL; ?>/services.php" class="category-nav-link <?php echo $currentPage === 'services' ? 'active' : ''; ?>">
-          <i class="bi bi-tools me-1"></i> Services
-        </a>
-      </div>
-    </div>
   </nav>
+
+  <main>
 
   <!-- Mobile Offcanvas Menu -->
   <div class="offcanvas offcanvas-end d-md-none" tabindex="-1" id="mobileMenu">
