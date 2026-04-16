@@ -1598,3 +1598,78 @@ main { position: relative; z-index: 1; padding-top: 0; }
 
 /* Nav CTA - override for header */
 .nav-cta-btn { display: none !important; }
+
+/* =============================================
+   PRINT STYLES — Receipt & Invoice Formatting
+   ============================================= */
+@media print {
+  /* Hide UI elements */
+  .top-bar, 
+  .mh-navbar, 
+  .mh-breadcrumb, 
+  .no-print, 
+  footer, 
+  .toast-notification,
+  .btn-outline-glow,
+  .btn-gradient,
+  .nav-actions {
+    display: none !important;
+  }
+
+  /* Reset body background */
+  body {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Reset container */
+  .container-custom {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Format receipt card */
+  .receipt-card {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .section-padding {
+    padding: 20px 0 !important;
+  }
+
+  /* Ensure colors are printed */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Table formatting */
+  .table thead th {
+    background-color: #f8fafc !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+  }
+
+  /* Badge formatting */
+  .badge {
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  /* Force display: block for images and text */
+  img {
+    max-height: 50px !important;
+  }
+
+  /* Typography adjustments */
+  h2, .h4, .h5 {
+    color: #0f172a !important;
+  }
+}

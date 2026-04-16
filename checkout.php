@@ -72,26 +72,145 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (isset($_GET['success'])) {
     $orderNumber = $_GET['success'];
     $pageTitle = 'Order Confirmed';
+
+    // Fetch order details
+    $stmt = $conn->prepare("SELECT * FROM orders WHERE order_number = ?");
+    $stmt->bind_param("s", $orderNumber);
+    $stmt->execute();
+    $order = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+
+    if (!$order) {
+        header('Location: ' . SITE_URL . '/shop.php');
+        exit;
+    }
+
+    // Fetch order items
+    $stmt = $conn->prepare("
+        SELECT oi.*, p.name as product_name, p.image1 
+        FROM order_items oi 
+        JOIN products p ON oi.product_id = p.id 
+        WHERE oi.order_id = ?
+    ");
+    $stmt->bind_param("i", $order['id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $items = [];
+    while ($row = $result->fetch_assoc()) {
+        $items[] = $row;
+    }
+    $stmt->close();
+
     require_once __DIR__ . '/includes/header.php';
+
+    $subtotal = 0;
+    foreach ($items as $item) {
+        $subtotal += $item['price'] * $item['quantity'];
+    }
+    $shipping = $subtotal >= 2999 ? 0 : 99;
+    $tax = $subtotal * 0.18;
+    $grandTotal = $subtotal + $tax + $shipping;
 ?>
-    <div class="container-custom section-padding text-center">
-      <div class="glass-card" style="max-width: 600px; margin: 0 auto; padding: 60px 40px;">
-        <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
-        <h1 style="font-family: var(--font-display); font-size: 2rem; font-weight: 800; margin-bottom: 12px;">Order Confirmed!</h1>
-        <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 8px;">Thank you for your purchase</p>
-        <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; margin: 24px 0; display: inline-block;">
-          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Order Number</div>
-          <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--primary);"><?php echo htmlspecialchars($orderNumber); ?></div>
+    <div class="container-custom section-padding">
+      <div id="receipt-content" class="glass-card receipt-card mx-auto reveal" style="max-width: 800px; padding: 40px;">
+        <!-- Receipt Header -->
+        <div class="d-flex justify-content-between align-items-start mb-5 pb-4 border-bottom">
+          <div>
+            <div class="navbar-brand mb-2" style="font-size: 1.8rem;">
+              <div class="brand-icon d-inline-flex me-2"><i class="bi bi-phone"></i></div>
+              Mobile<span style="color: var(--primary);">Hub</span>
+            </div>
+            <p class="text-muted small mb-0">123 Tech Avenue, Digital Park<br>Tirunelveli, Tamil Nadu 627001<br>support@mobilehub.com</p>
+          </div>
+          <div class="text-end">
+            <h2 style="font-family: var(--font-display); font-weight: 800; color: var(--primary); margin-bottom: 5px;">INVOICE</h2>
+            <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-muted);">#<?php echo htmlspecialchars($order['order_number']); ?></div>
+            <div class="mt-2 small text-muted">Date: <?php echo date('d M, Y', strtotime($order['created_at'])); ?></div>
+          </div>
         </div>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 32px;">We'll send you an email confirmation with your order details shortly.</p>
-        <div class="d-flex gap-3 justify-content-center flex-wrap">
-          <a href="<?php echo SITE_URL; ?>/profile.php?tab=orders" class="btn-gradient">
-            <i class="bi bi-box-seam"></i> View My Orders
-          </a>
-          <a href="<?php echo SITE_URL; ?>/shop.php" class="btn-outline-glow">
-            <i class="bi bi-bag"></i> Continue Shopping
-          </a>
+
+        <div class="row g-4 mb-5">
+          <div class="col-sm-6">
+            <h6 class="text-uppercase fw-bold small text-muted mb-3" style="letter-spacing: 0.05em;">Shipping To:</h6>
+            <div class="fw-bold fs-5 mb-1"><?php echo htmlspecialchars($_SESSION['user_name']); ?></div>
+            <div class="text-muted small">
+              <?php echo nl2br(htmlspecialchars($order['address'])); ?><br>
+              Phone: <?php echo htmlspecialchars($order['phone']); ?>
+            </div>
+          </div>
+          <div class="col-sm-6 text-sm-end">
+            <h6 class="text-uppercase fw-bold small text-muted mb-3" style="letter-spacing: 0.05em;">Payment Details:</h6>
+            <div class="mb-1">Method: <span class="fw-bold"><?php echo htmlspecialchars($order['payment_method']); ?></span></div>
+            <div>Status: <span class="badge bg-success-subtle text-success border border-success-subtle px-2"><?php echo ucfirst($order['status']); ?></span></div>
+          </div>
         </div>
+
+        <!-- Order Items Table -->
+        <div class="table-responsive mb-4">
+          <table class="table table-borderless">
+            <thead style="background: var(--bg-surface); border-radius: var(--radius-sm);">
+              <tr>
+                <th class="ps-3 py-3 small text-uppercase text-muted">Description</th>
+                <th class="py-3 small text-uppercase text-muted text-center">Qty</th>
+                <th class="py-3 small text-uppercase text-muted text-end">Price</th>
+                <th class="pe-3 py-3 small text-uppercase text-muted text-end">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($items as $item): ?>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td class="ps-3 py-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="<?php echo SITE_URL; ?>/assets/images/products/<?php echo $item['image1'] ?? 'placeholder.png'; ?>" 
+                         alt="" style="width: 40px; height: 40px; object-fit: contain;"
+                         onerror="this.src='https://placehold.co/40x40/f8fafc/2563eb?text=P'">
+                    <span class="fw-medium"><?php echo htmlspecialchars($item['product_name']); ?></span>
+                  </div>
+                </td>
+                <td class="py-3 text-center"><?php echo $item['quantity']; ?></td>
+                <td class="py-3 text-end"><?php echo formatPrice($item['price']); ?></td>
+                <td class="pe-3 py-3 text-end fw-bold"><?php echo formatPrice($item['price'] * $item['quantity']); ?></td>
+              </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Summary Totals -->
+        <div class="d-flex justify-content-end">
+          <div style="width: 100%; max-width: 300px;">
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">Subtotal:</span>
+              <span class="fw-medium"><?php echo formatPrice($subtotal); ?></span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">GST (18%):</span>
+              <span class="fw-medium"><?php echo formatPrice($tax); ?></span>
+            </div>
+            <div class="d-flex justify-content-between mb-3 pb-3 border-bottom">
+              <span class="text-muted">Shipping:</span>
+              <span class="text-success fw-medium"><?php echo $shipping === 0 ? 'FREE' : formatPrice($shipping); ?></span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-0">
+              <span class="h5 mb-0 fw-bold">Total:</span>
+              <span class="h4 mb-0 fw-extrabold text-primary"><?php echo formatPrice($order['total']); ?></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 pt-4 border-top text-center">
+          <p class="text-muted small mb-0">Thank you for shopping with MobileHub! This is a computer-generated invoice.</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="d-flex gap-3 justify-content-center mt-5 no-print">
+        <button onclick="window.print()" class="btn-outline-glow px-4">
+          <i class="bi bi-file-earmark-pdf me-2"></i> Download Receipt
+        </button>
+        <a href="<?php echo SITE_URL; ?>/shop.php" class="btn-gradient px-4">
+          <i class="bi bi-bag me-2"></i> Continue Shopping
+        </a>
       </div>
     </div>
 <?php
