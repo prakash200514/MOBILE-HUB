@@ -77,3 +77,28 @@ mobile-store/
 ```bash
 # Place the folder in your XAMPP htdocs directory
 C:\xampp\htdocs\mobile-store\
+
+**2. Start XAMPP Services**
+- Open XAMPP Control Panel
+- Start **Apache** and **MySQL**
+**3. Create the Database**
+- Open your browser and go to `http://localhost/phpmyadmin`
+- Click **New** → create a database named `mobilehub_db`
+- Select `mobilehub_db`, click the **Import** tab
+- Import `db_setup.sql` (found in the project root)
+**4. Configure Database Connection**
+Edit `includes/db.php` and update the credentials if needed:
+```php
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');          // Leave empty for default XAMPP setup
+define('DB_NAME', 'mobilehub_db');
+define('SITE_URL', 'http://localhost/mobile-store');
+```
+**5. Set Up Upload Directory**
+Ensure the product image upload folder exists and is writable:
+```
+assets/images/products/
+assets/images/banners/
+```
+> On Windows with XAMPP these are writable by default.
