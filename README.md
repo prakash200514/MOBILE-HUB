@@ -74,8 +74,9 @@ mobile-store/
 - A modern web browser
 ### Step-by-Step
 **1. Clone / Copy the Project**
-```bash
-# Place the folder in your XAMPP htdocs directory
+
+
+ Place the folder in your XAMPP htdocs directory
 C:\xampp\htdocs\mobile-store\
 
 **2. Start XAMPP Services**
@@ -88,7 +89,7 @@ C:\xampp\htdocs\mobile-store\
 - Import `db_setup.sql` (found in the project root)
 **4. Configure Database Connection**
 Edit `includes/db.php` and update the credentials if needed:
-```php
+  
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');          // Leave empty for default XAMPP setup
