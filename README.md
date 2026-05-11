@@ -114,3 +114,29 @@ http://localhost/mobile-store
 | Email    | `admin@mobilehub.com`    |
 | Password | `admin123`               |
 > ⚠️ **Change these credentials immediately** after your first login in a production environment.
+
+## 🗄️ Database Schema
+| Table              | Purpose                                    |
+|--------------------|--------------------------------------------|
+| `users`            | Customer and admin accounts                |
+| `categories`       | Product categories (Smartphones, Tablets…) |
+| `brands`           | Mobile brands (Apple, Samsung, OnePlus…)   |
+| `products`         | Product listings with pricing & images     |
+| `cart`             | Per-user shopping cart items               |
+| `orders`           | Placed orders with shipping details        |
+| `order_items`      | Individual line items per order            |
+| `service_bookings` | Device repair & service requests           |
+| `reviews`          | Product ratings and customer reviews       |
+---
+## 🧰 Key Helper Functions (`includes/functions.php`)
+| Function                      | Description                          |
+|-------------------------------|--------------------------------------|
+| `getFeaturedProducts($limit)` | Fetch featured products              |
+| `getCategories()`             | Fetch all active categories          |
+| `getProductBySlug($slug)`     | Fetch a single product by URL slug   |
+| `formatPrice($amount)`        | Format price as Indian Rupee (₹)     |
+| `getDiscount($price, $sale)`  | Calculate percentage discount        |
+| `getProductRating($id)`       | Get average star rating for product  |
+| `renderStars($rating)`        | Render HTML star icons for rating    |
+| `isLoggedIn()`                | Check if a user session is active    |
+| `isAdmin()`                   | Check if the user has admin role     |
