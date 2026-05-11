@@ -16,3 +16,11 @@ A full-featured, modern mobile e-commerce web application built with **PHP**, **
 - **User Authentication** — Register, Login, Profile management
 - **Order History** — Track past orders and their status
 - **Services Booking** — Book screen repair, battery replacement, software update, and more
+
+### 🔧 Admin Panel
+- **Dashboard** — Summary stats (revenue, orders, users, products)
+- **Products Management** — Add, edit, delete products with image uploads
+- **Orders Management** — View and update order statuses
+- **Users Management** — View all registered customers
+- **Services Management** — Manage repair/service bookings
+---
