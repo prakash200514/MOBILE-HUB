@@ -102,3 +102,9 @@ assets/images/products/
 assets/images/banners/
 ```
 > On Windows with XAMPP these are writable by default.
+
+**6. Launch the App**
+Open your browser and visit:
+```
+http://localhost/mobile-store
+```
