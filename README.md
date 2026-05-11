@@ -24,3 +24,14 @@ A full-featured, modern mobile e-commerce web application built with **PHP**, **
 - **Users Management** — View all registered customers
 - **Services Management** — Manage repair/service bookings
 ---
+
+
+## 🛠️ Tech Stack
+| Layer        | Technology                            |
+|--------------|---------------------------------------|
+| Backend      | PHP 8.x (procedural + OOP)            |
+| Database     | MySQL 8.x via `mysqli`                |
+| Frontend     | HTML5, CSS3, Bootstrap 5              |
+| Icons        | Bootstrap Icons                       |
+| Server       | Apache (XAMPP recommended)            |
+| Image Upload | PHP `move_uploaded_file()`            |
