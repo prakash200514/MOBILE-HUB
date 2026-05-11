@@ -140,3 +140,42 @@ http://localhost/mobile-store
 | `renderStars($rating)`        | Render HTML star icons for rating    |
 | `isLoggedIn()`                | Check if a user session is active    |
 | `isAdmin()`                   | Check if the user has admin role     |
+
+📦 Product Categories
+| Category       | Slug              |
+|----------------|-------------------|
+| Smartphones    | `smartphones`     |
+| Tablets        | `tablets`         |
+| Earbuds & Audio| `earbuds-audio`   |
+| Smartwatches   | `smartwatches`    |
+| Accessories    | `accessories`     |
+| Power Banks    | `power-banks`     |
+---
+## 🔒 Security Notes
+- Passwords are hashed with **bcrypt** (`password_hash()` / `password_verify()`)
+- All user inputs are sanitized with `htmlspecialchars()` and prepared statements
+- Admin routes are protected by `check_admin.php` — unauthenticated access redirects to login
+- Sessions are managed server-side with PHP native sessions
+---
+## 📸 Adding Product Images
+1. Upload product images via the **Admin → Products** panel, **or**
+2. Manually copy image files to:
+   ```
+   assets/images/products/
+   ```
+3. Supported formats: `jpg`, `jpeg`, `png`, `webp`
+4. Recommended size: **800×800 px** or higher for best display quality
+---
+## 🤝 Contributing
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m "Add your feature"`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+---
+## 📄 License
+This project is open-source and available under the [MIT License](LICENSE).
+---
+<div align="center">
+  Built with ❤️ by <strong>Prakash</strong> — MobileHub © 2026
+</div>
