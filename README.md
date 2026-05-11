@@ -68,3 +68,12 @@ mobile-store/
 ├── db_setup.sql            # Database schema + seed data
 └── README.md
 ```
+## ⚙️ Installation & Setup
+### Prerequisites
+- [XAMPP](https://www.apachefriends.org/) (PHP 8.x + MySQL + Apache)
+- A modern web browser
+### Step-by-Step
+**1. Clone / Copy the Project**
+```bash
+# Place the folder in your XAMPP htdocs directory
+C:\xampp\htdocs\mobile-store\
