@@ -108,3 +108,9 @@ Open your browser and visit:
 ```
 http://localhost/mobile-store
 ```
+## 🔑 Default Admin Credentials
+| Field    | Value                    |
+|----------|--------------------------|
+| Email    | `admin@mobilehub.com`    |
+| Password | `admin123`               |
+> ⚠️ **Change these credentials immediately** after your first login in a production environment.
