@@ -5,3 +5,14 @@ A full-featured, modern mobile e-commerce web application built with **PHP**, **
 > **Local URL:** `http://localhost/mobile-store`  
 > **Admin Panel:** `http://localhost/mobile-store/admin`
 ---
+
+## ✨ Features
+### 🛍️ Customer-Facing
+- **Homepage** — Hero carousel, brand explorer, category grid, featured products, new arrivals, offer cards, testimonials
+- **Shop Page** — Filter by brand/category, sort by price & newest, search, pagination
+- **Product Detail** — Image gallery, specifications table, star ratings & reviews, related products, add-to-cart
+- **Shopping Cart** — Quantity management, real-time subtotal, coupon support
+- **Checkout** — Address entry, payment method selection (COD, UPI, Card), order summary
+- **User Authentication** — Register, Login, Profile management
+- **Order History** — Track past orders and their status
+- **Services Booking** — Book screen repair, battery replacement, software update, and more
