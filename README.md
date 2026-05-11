@@ -35,3 +35,36 @@ A full-featured, modern mobile e-commerce web application built with **PHP**, **
 | Icons        | Bootstrap Icons                       |
 | Server       | Apache (XAMPP recommended)            |
 | Image Upload | PHP `move_uploaded_file()`            |
+
+## 📁 Project Structure
+```
+mobile-store/
+├── admin/                  # Admin panel pages
+│   ├── index.php           # Admin dashboard
+│   ├── products.php        # Manage products
+│   ├── orders.php          # Manage orders
+│   ├── users.php           # Manage users
+│   └── services.php        # Manage service bookings
+├── api/                    # AJAX endpoints (cart, wishlist, etc.)
+├── assets/
+│   └── images/
+│       ├── products/       # Product images (upload directory)
+│       └── banners/        # Hero & promotional banners
+├── includes/
+│   ├── db.php              # Database connection & site config
+│   ├── functions.php       # Reusable helper functions
+│   ├── auth.php            # Authentication helpers
+│   ├── header.php          # Global header & navigation
+│   └── footer.php          # Global footer
+├── index.php               # Homepage
+├── shop.php                # Product listing / shop page
+├── product.php             # Single product detail page
+├── cart.php                # Shopping cart
+├── checkout.php            # Checkout & order placement
+├── login.php               # Login page
+├── profile.php             # User profile & order history
+├── services.php            # Repair & services booking
+├── check_admin.php         # Admin access guard
+├── db_setup.sql            # Database schema + seed data
+└── README.md
+```
